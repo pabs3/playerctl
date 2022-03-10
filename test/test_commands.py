@@ -15,7 +15,8 @@ async def test_commands(bus_address):
     mpris.volume = 1.0
     mpris.loop_status = 'Track'
 
-    commands = ('play', 'pause', 'play-pause', 'stop', 'next', 'previous')
+    commands = ('play', 'pause', 'play-pause', 'stop', 'quit', 'next',
+                'previous')
     setters = ('volume 0.8', 'loop playlist', 'shuffle on')
 
     def get_called(cmd):

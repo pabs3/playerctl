@@ -99,6 +99,8 @@ Command the player to pause.
 Command the player to toggle between play and pause.
 .It Cm stop
 Command the player to stop.
+.It Cm quit
+Command the player to quit.
 .It Cm next
 Command the player to skip to the next track.
 .It Cm previous

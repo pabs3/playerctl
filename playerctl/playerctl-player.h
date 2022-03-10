@@ -147,6 +147,8 @@ void playerctl_player_play(PlayerctlPlayer *self, GError **err);
 
 void playerctl_player_stop(PlayerctlPlayer *self, GError **err);
 
+void playerctl_player_quit(PlayerctlPlayer *self, GError **err);
+
 void playerctl_player_seek(PlayerctlPlayer *self, gint64 offset, GError **err);
 
 void playerctl_player_pause(PlayerctlPlayer *self, GError **err);

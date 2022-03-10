@@ -247,6 +247,27 @@ static gboolean playercmd_stop(PlayerctlPlayer *player, gchar **argv, gint argc,
     return TRUE;
 }
 
+static gboolean playercmd_quit(PlayerctlPlayer *player, gchar **argv, gint argc, gchar **output,
+                               GError **error) {
+    GError *tmp_error = NULL;
+    gchar *instance = pctl_player_get_instance(player);
+
+    gboolean can_quit = FALSE;
+    g_object_get(player, "can-quit", &can_quit, NULL);
+
+    if (!can_quit) {
+        g_debug("%s: can-quit is false, skipping", instance);
+        return FALSE;
+    }
+
+    playerctl_player_quit(player, &tmp_error);
+    if (tmp_error) {
+        g_propagate_error(error, tmp_error);
+        return FALSE;
+    }
+    return TRUE;
+}
+
 static gboolean playercmd_next(PlayerctlPlayer *player, gchar **argv, gint argc, gchar **output,
                                GError **error) {
     GError *tmp_error = NULL;
@@ -757,6 +778,7 @@ struct player_command {
     {"pause", &playercmd_pause, FALSE, NULL},
     {"play-pause", &playercmd_play_pause, FALSE, NULL},
     {"stop", &playercmd_stop, FALSE, NULL},
+    {"quit", &playercmd_quit, FALSE, NULL},
     {"next", &playercmd_next, FALSE, NULL},
     {"previous", &playercmd_previous, FALSE, NULL},
     {"position", &playercmd_position, TRUE, "seeked"},
@@ -823,6 +845,7 @@ static gboolean parse_setup_options(int argc, char *argv[], GError **error) {
         "\n  play-pause              Command the player to toggle between "
         "play/pause"
         "\n  stop                    Command the player to stop"
+        "\n  quit                    Command the player to quit"
         "\n  next                    Command the player to skip to the next track"
         "\n  previous                Command the player to skip to the previous "
         "track"

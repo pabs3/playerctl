@@ -57,9 +57,10 @@ async def test_daemon_commands(bus_address):
     # errors as well.
     results = await asyncio.gather(*(run(cmd)
                                      for cmd in ('play', 'pause', 'play-pause',
-                                                 'stop', 'next', 'previous',
-                                                 'position', 'volume',
-                                                 'status', 'metadata', 'loop',
+                                                 'stop', 'quit', 'next',
+                                                 'previous', 'position',
+                                                 'volume', 'status',
+                                                 'metadata', 'loop',
                                                  'shuffle')))
     for result in results:
         assert result.returncode == 1

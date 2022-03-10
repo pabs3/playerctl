@@ -41,6 +41,7 @@ _regex_words commands 'playerctl command' \
 	'pause:Command the player to pause' \
 	'play-pause:Command the player to toggle between play/pause' \
 	'stop:Command the player to stop' \
+	'quit:Command the player to quit' \
 	'next:Command the player to skip to the next track' \
 	'previous:Command the player to skip to the previous track' \
 	'position:Command the player to go or seek to the position' \

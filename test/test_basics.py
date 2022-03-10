@@ -26,10 +26,10 @@ async def test_basics():
     assert result.stdout
     assert not result.stderr
 
-    commands = ('play', 'pause', 'play-pause', 'stop', 'next', 'previous',
-                'position', 'position 5', 'volume', 'volume 0.5', 'status',
-                'metadata', 'loop', 'loop None', 'shuffle', 'shuffle On',
-                'open https://google.com')
+    commands = ('play', 'pause', 'play-pause', 'stop', 'quit', 'next',
+                'previous', 'position', 'position 5', 'volume', 'volume 0.5',
+                'status', 'metadata', 'loop', 'loop None', 'shuffle',
+                'shuffle On', 'open https://google.com')
 
     results = await asyncio.gather(*(playerctl.run(cmd) for cmd in commands))
 

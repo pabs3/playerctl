@@ -83,6 +83,7 @@ class MprisPlayer(ServiceInterface):
         self.play_pause_called = False
         self.stop_called = False
         self.play_called = False
+        self.quit_called = False
         self.seek_called_with = None
         self.set_position_called_with = None
         self.open_uri_called_with = None
@@ -164,6 +165,10 @@ class MprisPlayer(ServiceInterface):
     @method()
     def Play(self):
         self.play_called = True
+
+    @method()
+    def Quit(self):
+        self.quit_called = True
 
     @method()
     def Seek(self, offset: 'x'):

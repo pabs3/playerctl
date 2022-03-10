@@ -8,6 +8,7 @@ _playerctl_completions() {
 		pause
 		play-pause
 		stop
+		quit
 		next
 		previous
 		position

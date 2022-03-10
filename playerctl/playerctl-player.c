@@ -1236,6 +1236,17 @@ void playerctl_player_stop(PlayerctlPlayer *self, GError **err) {
 }
 
 /**
+ * playerctl_player_quit:
+ * @self: a #PlayerctlPlayer
+ * @err:(allow-none): the location of a GError or NULL
+ *
+ * Command the player to quit
+ */
+void playerctl_player_quit(PlayerctlPlayer *self, GError **err) {
+    PLAYER_COMMAND_FUNC(quit);
+}
+
+/**
  * playerctl_player_seek:
  * @self: a #PlayerctlPlayer
  * @offset: the offset to seek forward to in microseconds
